@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/screens/activity_screen.dart';
 import 'package:instagram/screens/main_screen.dart';
-import 'package:instagram/screens/user_profile_screen.dart';
 
 void main() {
   runApp(Application());
 }
 
 class Application extends StatelessWidget {
-  const Application({Key? key}) : super(key: key);
+  const Application({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         textTheme: TextTheme(
-          headline4: TextStyle(
+          headlineMedium: TextStyle(
             fontFamily: 'GB',
             fontSize: 16,
             color: Colors.white,
@@ -23,11 +21,14 @@ class Application extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: Color(0xffF35383),
+            backgroundColor: Color(0xffF35383),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            textStyle: TextStyle(fontFamily: 'GB', fontSize: 16),
+            textStyle: TextStyle(
+              fontFamily: 'GB',
+              fontSize: 16,
+            ),
           ),
         ),
       ),
@@ -38,7 +39,7 @@ class Application extends StatelessWidget {
 }
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,9 @@ class SplashScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 80),
               child: Center(
                 child: Image(
-                  image: AssetImage('images/logo_splash.png'),
+                  image: AssetImage(
+                    'images/logo_splash.png',
+                  ),
                 ),
               ),
             ),
@@ -68,9 +71,16 @@ class SplashScreen extends StatelessWidget {
                 children: [
                   Text(
                     'from',
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
-                  Text('ExpertFlutter', style: TextStyle(color: Colors.blue)),
+                  Text(
+                    'ExpertFlutter',
+                    style: TextStyle(
+                      color: Colors.blue,
+                    ),
+                  ),
                 ],
               ),
             )

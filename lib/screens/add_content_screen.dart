@@ -1,63 +1,64 @@
 import 'package:flutter/material.dart';
 
 class AddContentScreen extends StatelessWidget {
-  const AddContentScreen({Key? key}) : super(key: key);
+  const AddContentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff1C1F2E),
       body: SafeArea(
-          child: Stack(
-        alignment: AlignmentDirectional.bottomCenter,
-        children: [
-          _getWholeScrollingPart(),
-          Container(
-            height: 83,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Color(0xff272B40),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
+        child: Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          children: [
+            _getWholeScrollingPart(),
+            Container(
+              height: 83,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Color(0xff272B40),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: 10, right: 18, left: 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Draft',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'GB',
+              child: Padding(
+                padding: EdgeInsets.only(top: 10, right: 18, left: 18),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Draft',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'GB',
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Gallery',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'GB',
+                    Text(
+                      'Gallery',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'GB',
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Take',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'GB',
+                    Text(
+                      'Take',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'GB',
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
-      )),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -99,7 +100,9 @@ class AddContentScreen extends StatelessWidget {
             ),
           ),
         ),
-        SliverPadding(padding: EdgeInsets.only(bottom: 83))
+        SliverPadding(
+          padding: EdgeInsets.only(bottom: 83),
+        )
       ],
     );
   }
@@ -131,23 +134,27 @@ class AddContentScreen extends StatelessWidget {
         children: [
           Text(
             'Post',
-            style:
-                TextStyle(color: Colors.white, fontFamily: 'GB', fontSize: 24),
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'GB',
+              fontSize: 24,
+            ),
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Image.asset('images/icon_arrow_down.png'),
           Spacer(),
           Text(
             'Next',
-            style:
-                TextStyle(color: Colors.white, fontFamily: 'GB', fontSize: 16),
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'GB',
+              fontSize: 16,
+            ),
           ),
-          SizedBox(
-            width: 5,
-          ),
-          Image.asset('images/icon_arrow_right_box.png')
+          SizedBox(width: 5),
+          Image.asset(
+            'images/icon_arrow_right_box.png',
+          )
         ],
       ),
     );

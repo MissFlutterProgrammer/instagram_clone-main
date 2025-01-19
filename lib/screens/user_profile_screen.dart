@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class UserProfileScreen extends StatelessWidget {
-  const UserProfileScreen({Key? key}) : super(key: key);
+  const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,29 +68,34 @@ class UserProfileScreen extends StatelessWidget {
               )
             ];
           },
-          body: TabBarView(children: [
-            CustomScrollView(
-              slivers: [
-                SliverPadding(
-                  padding: EdgeInsets.only(top: 20, left: 18, right: 18),
-                  sliver: SliverGrid(
-                    delegate: SliverChildBuilderDelegate(((context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Image.asset('images/item$index.png'),
-                          ),
-                        ),
-                      );
-                    }), childCount: 10),
-                    gridDelegate: SliverQuiltedGridDelegate(
+          body: TabBarView(
+            children: [
+              CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: EdgeInsets.only(top: 20, left: 18, right: 18),
+                    sliver: SliverGrid(
+                      delegate: SliverChildBuilderDelegate(
+                        ((context, index) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset('images/item$index.png'),
+                              ),
+                            ),
+                          );
+                        }),
+                        childCount: 10,
+                      ),
+                      gridDelegate: SliverQuiltedGridDelegate(
                         crossAxisCount: 3,
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 10,
@@ -101,33 +106,38 @@ class UserProfileScreen extends StatelessWidget {
                           QuiltedGridTile(1, 1),
                           QuiltedGridTile(1, 1),
                           QuiltedGridTile(1, 1),
-                        ]),
-                  ),
-                )
-              ],
-            ),
-            CustomScrollView(
-              slivers: [
-                SliverPadding(
-                  padding: EdgeInsets.only(top: 20, left: 18, right: 18),
-                  sliver: SliverGrid(
-                    delegate: SliverChildBuilderDelegate(((context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Image.asset('images/item$index.png'),
-                          ),
-                        ),
-                      );
-                    }), childCount: 10),
-                    gridDelegate: SliverQuiltedGridDelegate(
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: EdgeInsets.only(top: 20, left: 18, right: 18),
+                    sliver: SliverGrid(
+                      delegate: SliverChildBuilderDelegate(
+                        ((context, index) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset('images/item$index.png'),
+                              ),
+                            ),
+                          );
+                        }),
+                        childCount: 10,
+                      ),
+                      gridDelegate: SliverQuiltedGridDelegate(
                         crossAxisCount: 3,
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 10,
@@ -138,12 +148,14 @@ class UserProfileScreen extends StatelessWidget {
                           QuiltedGridTile(1, 1),
                           QuiltedGridTile(1, 1),
                           QuiltedGridTile(1, 1),
-                        ]),
-                  ),
-                )
-              ],
-            ),
-          ]),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -178,10 +190,8 @@ class UserProfileScreen extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: 15),
           SizedBox(
-            width: 15,
-          ),
-          Container(
             height: 70,
             child: Center(
               child: Column(
@@ -191,7 +201,10 @@ class UserProfileScreen extends StatelessWidget {
                   Text(
                     'امیراحمدادیبی',
                     style: TextStyle(
-                        color: Colors.white, fontFamily: 'SM', fontSize: 14),
+                      color: Colors.white,
+                      fontFamily: 'SM',
+                      fontSize: 14,
+                    ),
                   ),
                   SizedBox(
                     height: 5,
@@ -199,16 +212,19 @@ class UserProfileScreen extends StatelessWidget {
                   Text(
                     'amriahmadadibi',
                     style: TextStyle(
-                        color: Color(0xffC5C5C5),
-                        fontFamily: 'GB',
-                        fontSize: 12),
+                      color: Color(0xffC5C5C5),
+                      fontFamily: 'GB',
+                      fontSize: 12,
+                    ),
                   )
                 ],
               ),
             ),
           ),
           Spacer(),
-          Image.asset('images/icon_profile_edit.png')
+          Image.asset(
+            'images/icon_profile_edit.png',
+          )
         ],
       ),
     );
@@ -229,11 +245,9 @@ class TabBarViewDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  // TODO: implement maxExtent
   double get maxExtent => _tabBar.preferredSize.height;
 
   @override
-  // TODO: implement minExtent
   double get minExtent => _tabBar.preferredSize.height;
 
   @override

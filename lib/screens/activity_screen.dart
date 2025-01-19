@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram/model/enums/activity_type_enum.dart';
 
 class ActivityScreen extends StatefulWidget {
-  const ActivityScreen({Key? key}) : super(key: key);
+  const ActivityScreen({super.key});
 
   @override
   State<ActivityScreen> createState() => _ActivityScreenState();
@@ -14,7 +14,6 @@ class _ActivityScreenState extends State<ActivityScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _tabController = TabController(length: 2, vsync: this);
@@ -32,7 +31,10 @@ class _ActivityScreenState extends State<ActivityScreen>
               height: 70,
               child: TabBar(
                 controller: _tabController,
-                labelStyle: TextStyle(fontSize: 20, fontFamily: 'GB'),
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'GB',
+                ),
                 indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
                 indicatorWeight: 4,
                 indicatorColor: Color(0xffF35383),
@@ -47,13 +49,14 @@ class _ActivityScreenState extends State<ActivityScreen>
               ),
             ),
             Expanded(
-                child: TabBarView(
-              controller: _tabController,
-              children: [
-                _getSampleList(),
-                _getSampleList(),
-              ],
-            ))
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  _getSampleList(),
+                  _getSampleList(),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -69,14 +72,20 @@ class _ActivityScreenState extends State<ActivityScreen>
             child: Text(
               'New',
               style: TextStyle(
-                  fontSize: 16, fontFamily: 'GB', color: Colors.white),
+                fontSize: 16,
+                fontFamily: 'GB',
+                color: Colors.white,
+              ),
             ),
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return _getRow(ActivityStatus.lkies);
-          }, childCount: 2),
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return _getRow(ActivityStatus.lkies);
+            },
+            childCount: 2,
+          ),
         ),
         SliverToBoxAdapter(
           child: Padding(
@@ -107,7 +116,10 @@ class _ActivityScreenState extends State<ActivityScreen>
             child: Text(
               'This Week',
               style: TextStyle(
-                  fontSize: 16, fontFamily: 'GB', color: Colors.white),
+                fontSize: 16,
+                fontFamily: 'GB',
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -128,8 +140,10 @@ class _ActivityScreenState extends State<ActivityScreen>
           Container(
             height: 6,
             width: 6,
-            decoration:
-                BoxDecoration(color: Color(0xffF35383), shape: BoxShape.circle),
+            decoration: BoxDecoration(
+              color: Color(0xffF35383),
+              shape: BoxShape.circle,
+            ),
           ),
           SizedBox(
             width: 7,
@@ -145,9 +159,7 @@ class _ActivityScreenState extends State<ActivityScreen>
               ),
             ),
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -156,17 +168,19 @@ class _ActivityScreenState extends State<ActivityScreen>
                   Text(
                     'amirahmadadibii',
                     style: TextStyle(
-                        fontFamily: 'GB', fontSize: 12, color: Colors.white),
+                      fontFamily: 'GB',
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
                   ),
-                  SizedBox(
-                    width: 5,
-                  ),
+                  SizedBox(width: 5),
                   Text(
                     'Started Following',
                     style: TextStyle(
-                        fontFamily: 'GM',
-                        fontSize: 12,
-                        color: Color(0xffC5C5C5)),
+                      fontFamily: 'GM',
+                      fontSize: 12,
+                      color: Color(0xffC5C5C5),
+                    ),
                   )
                 ],
               ),
@@ -175,19 +189,19 @@ class _ActivityScreenState extends State<ActivityScreen>
                   Text(
                     'you',
                     style: TextStyle(
-                        fontFamily: 'GM',
-                        fontSize: 12,
-                        color: Color(0xffC5C5C5)),
+                      fontFamily: 'GM',
+                      fontSize: 12,
+                      color: Color(0xffC5C5C5),
+                    ),
                   ),
-                  SizedBox(
-                    width: 8,
-                  ),
+                  SizedBox(width: 8),
                   Text(
                     '3min',
                     style: TextStyle(
-                        fontFamily: 'GB',
-                        fontSize: 12,
-                        color: Color(0xffC5C5C5)),
+                      fontFamily: 'GB',
+                      fontSize: 12,
+                      color: Color(0xffC5C5C5),
+                    ),
                   )
                 ],
               )
@@ -205,11 +219,14 @@ class _ActivityScreenState extends State<ActivityScreen>
       case ActivityStatus.followBack:
         return ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color(0xffF35383),
+            backgroundColor: Color(0xffF35383),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6),
             ),
-            textStyle: TextStyle(fontFamily: 'GB', fontSize: 16),
+            textStyle: TextStyle(
+              fontFamily: 'GB',
+              fontSize: 16,
+            ),
           ),
           onPressed: () {},
           child: Text('Follow'),
@@ -230,24 +247,38 @@ class _ActivityScreenState extends State<ActivityScreen>
       case ActivityStatus.following:
         return OutlinedButton(
           onPressed: () {},
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(
+              color: Color(0xffC5C5C5),
+              width: 2,
+            ),
+          ),
           child: Text(
             'Message',
             style: TextStyle(
-                fontFamily: 'GB', fontSize: 12, color: Color(0xffC5C5C5)),
+              fontFamily: 'GB',
+              fontSize: 12,
+              color: Color(0xffC5C5C5),
+            ),
           ),
-          style: OutlinedButton.styleFrom(
-              side: BorderSide(color: Color(0xffC5C5C5), width: 2)),
         );
       default:
         return OutlinedButton(
           onPressed: () {},
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(
+              color: Color(0xffC5C5C5),
+              width: 2,
+            ),
+          ),
           child: Text(
             'Message',
             style: TextStyle(
-                fontFamily: 'GB', fontSize: 12, color: Color(0xffC5C5C5)),
+              fontFamily: 'GB',
+              fontSize: 12,
+              color: Color(0xffC5C5C5),
+            ),
           ),
-          style: OutlinedButton.styleFrom(
-              side: BorderSide(color: Color(0xffC5C5C5), width: 2)),
         );
     }
   }

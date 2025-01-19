@@ -2,41 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff1C1F2E),
       body: SafeArea(
-          child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: _getSearchBox(),
-          ),
-          SliverToBoxAdapter(
-            child: _getSotryList(),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(((context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.asset('images/item$index.png'),
-                    ),
-                  ),
-                );
-              }), childCount: 10),
-              gridDelegate: SliverQuiltedGridDelegate(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: _getSearchBox(),
+            ),
+            SliverToBoxAdapter(
+              child: _getSotryList(),
+            ),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverGrid(
+                delegate: SliverChildBuilderDelegate(
+                  ((context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: FittedBox(
+                          fit: BoxFit.cover,
+                          child: Image.asset('images/item$index.png'),
+                        ),
+                      ),
+                    );
+                  }),
+                  childCount: 10,
+                ),
+                gridDelegate: SliverQuiltedGridDelegate(
                   crossAxisCount: 3,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
@@ -47,11 +50,13 @@ class SearchScreen extends StatelessWidget {
                     QuiltedGridTile(1, 1),
                     QuiltedGridTile(1, 1),
                     QuiltedGridTile(1, 1),
-                  ]),
-            ),
-          )
-        ],
-      )),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -68,9 +73,7 @@ class SearchScreen extends StatelessWidget {
         child: Row(
           children: [
             Image.asset('images/icon_search.png'),
-            SizedBox(
-              width: 15,
-            ),
+            SizedBox(width: 15),
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
@@ -81,10 +84,10 @@ class SearchScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: 15,
+            SizedBox(width: 15),
+            Image.asset(
+              'images/icon_scan.png',
             ),
-            Image.asset('images/icon_scan.png'),
           ],
         ),
       ),

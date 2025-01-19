@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -13,7 +13,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     negahban1.addListener(() {
       setState(() {});
@@ -27,15 +26,23 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(0xff323A99), Color(0xffF98BFC)])),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xff323A99),
+            Color(0xffF98BFC),
+          ],
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
           alignment: AlignmentDirectional.bottomCenter,
-          children: [_getImageContainer(), _getContainerBox()],
+          children: [
+            _getImageContainer(),
+            _getContainerBox(),
+          ],
         ),
       ),
     );
@@ -60,23 +67,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                SizedBox(height: 50),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Sign in to ',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
-                    Image(image: AssetImage('images/mood.png'))
+                    Image(
+                      image: AssetImage(
+                        'images/mood.png',
+                      ),
+                    )
                   ],
                 ),
-                SizedBox(
-                  height: 34,
-                ),
+                SizedBox(height: 34),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 44),
                   child: TextField(
@@ -94,8 +104,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide:
-                            BorderSide(color: Color(0xffC5C5C5), width: 3.0),
+                        borderSide: BorderSide(
+                          color: Color(0xffC5C5C5),
+                          width: 3,
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -107,9 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 32,
-                ),
+                SizedBox(height: 32),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 44),
                   child: TextField(
@@ -127,8 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide:
-                            BorderSide(color: Color(0xffC5C5C5), width: 3.0),
+                        borderSide: BorderSide(
+                          color: Color(0xffC5C5C5),
+                          width: 3,
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -158,7 +170,9 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Expanded(
             child: Image(
-              image: AssetImage('images/rocket.png'),
+              image: AssetImage(
+                'images/rocket.png',
+              ),
             ),
           ),
           Expanded(child: Container())

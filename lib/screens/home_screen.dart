@@ -1,11 +1,12 @@
-import 'dart:ui';
+// ignore_for_file: unused_element, depend_on_referenced_packages
 
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:instagram/screens/share_bottomsheet.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: false,
         backgroundColor: Color(0xff1C1F2E),
         elevation: 0,
-        title: Container(
+        title: SizedBox(
           width: 128,
           height: 24,
           child: Image.asset('images/moodinger_logo.png'),
@@ -25,66 +26,70 @@ class HomeScreen extends StatelessWidget {
             height: 24,
             width: 24,
             margin: EdgeInsets.only(right: 18),
-            child: Image.asset('images/icon_direct.png'),
+            child: Image.asset(
+              'images/icon_direct.png',
+            ),
           )
         ],
       ),
       body: SafeArea(
-          child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: ElevatedButton(
-              onPressed: () {
-                showModalBottomSheet(
-                    barrierColor: Colors.transparent,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (BuildContext context) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom),
-                        child: DraggableScrollableSheet(
-                          initialChildSize: 0.5,
-                          minChildSize: 0.2,
-                          maxChildSize: 0.7,
-                          builder: (context, controler) {
-                            return ShareBottomSheet(
-                              controller: controler,
-                            );
-                          },
-                        ),
-                      );
-                    });
-              },
-              child: Text('Open BottomSheet'),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: ElevatedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                      barrierColor: Colors.transparent,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: DraggableScrollableSheet(
+                            initialChildSize: 0.5,
+                            minChildSize: 0.2,
+                            maxChildSize: 0.7,
+                            builder: (context, controler) {
+                              return ShareBottomSheet(
+                                controller: controler,
+                              );
+                            },
+                          ),
+                        );
+                      });
+                },
+                child: Text('Open BottomSheet'),
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: _getSotryList(),
-          ),
-          SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-            return Column(
-              children: [
-                SizedBox(
-                  height: 34,
-                ),
-                _getHeaderPost(),
-                SizedBox(
-                  height: 24,
-                ),
-                _getPostContent()
-              ],
-            );
-          }, childCount: 4))
-        ],
-      )),
+            SliverToBoxAdapter(
+              child: _getSotryList(),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Column(
+                    children: [
+                      SizedBox(height: 34),
+                      _getHeaderPost(),
+                      SizedBox(height: 24),
+                      _getPostContent()
+                    ],
+                  );
+                },
+                childCount: 4,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
   Widget _getSotryList() {
-    return Container(
+    return SizedBox(
       height: 120,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -103,13 +108,9 @@ class HomeScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              SizedBox(
-                height: 34,
-              ),
+              SizedBox(height: 34),
               _getHeaderPost(),
-              SizedBox(
-                height: 24,
-              ),
+              SizedBox(height: 24),
               _getPostContent()
             ],
           );
@@ -117,7 +118,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _getPostContent() {
-    return Container(
+    return SizedBox(
       height: 440,
       width: 394,
       child: Stack(
@@ -146,58 +147,49 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Color.fromRGBO(255, 255, 255, 0.5),
-                          Color.fromRGBO(255, 255, 255, 0.2),
-                        ]),
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Color.fromRGBO(255, 255, 255, 0.5),
+                        Color.fromRGBO(255, 255, 255, 0.2),
+                      ],
+                    ),
                   ),
                   child: Row(
                     children: [
-                      SizedBox(
-                        width: 15,
-                      ),
+                      SizedBox(width: 15),
                       Row(
                         children: [
                           Image.asset('images/icon_hart.png'),
-                          SizedBox(
-                            width: 6,
-                          ),
+                          SizedBox(width: 6),
                           Text(
                             '2.5 k',
                             style: TextStyle(
-                                fontFamily: 'GB',
-                                fontSize: 14,
-                                color: Colors.white),
+                              fontFamily: 'GB',
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
                           )
                         ],
                       ),
-                      SizedBox(
-                        width: 42,
-                      ),
+                      SizedBox(width: 42),
                       Row(
                         children: [
                           Image.asset('images/icon_comments.png'),
-                          SizedBox(
-                            width: 6,
-                          ),
+                          SizedBox(width: 6),
                           Text(
                             '1.5 k',
                             style: TextStyle(
-                                fontFamily: 'GB',
-                                fontSize: 14,
-                                color: Colors.white),
+                              fontFamily: 'GB',
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
                           )
                         ],
                       ),
-                      SizedBox(
-                        width: 42,
-                      ),
+                      SizedBox(width: 42),
                       Image.asset('images/icon_share.png'),
-                      SizedBox(
-                        width: 42,
-                      ),
+                      SizedBox(width: 42),
                       Image.asset('images/icon_save.png'),
                     ],
                   ),
@@ -225,11 +217,17 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'amirhamadadibii',
                   style: TextStyle(
-                      fontFamily: 'GB', color: Colors.white, fontSize: 12),
+                    fontFamily: 'GB',
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
                 ),
                 Text(
                   'امیراحمدادیبی برنامه‌نویس موبایل',
-                  style: TextStyle(color: Colors.white, fontFamily: 'SM'),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'SM',
+                  ),
                 )
               ],
             ),
@@ -251,7 +249,7 @@ class HomeScreen extends StatelessWidget {
       strokeWidth: 2,
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(15)),
-        child: Container(
+        child: SizedBox(
           height: 38,
           width: 38,
           child: Image.asset('images/profile.png'),
@@ -274,19 +272,19 @@ class HomeScreen extends StatelessWidget {
             strokeWidth: 2,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(15)),
-              child: Container(
+              child: SizedBox(
                 height: 58,
                 width: 58,
                 child: Image.asset('images/profile.png'),
               ),
             ),
           ),
-          SizedBox(
-            height: 12,
-          ),
+          SizedBox(height: 12),
           Text(
             'test',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+            ),
           )
         ],
       ),
@@ -318,12 +316,12 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 12,
-          ),
+          SizedBox(height: 12),
           Text(
             'your story',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+            ),
           )
         ],
       ),
