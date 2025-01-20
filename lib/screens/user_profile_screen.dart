@@ -57,10 +57,14 @@ class UserProfileScreen extends StatelessWidget {
                     indicatorColor: Color(0xffF35383),
                     tabs: [
                       Tab(
-                        icon: Image.asset('images/icon_tab_posts.png'),
+                        icon: Image.asset(
+                          'images/icon_tab_posts.png',
+                        ),
                       ),
                       Tab(
-                        icon: Image.asset('images/icon_tab_bookmark.png'),
+                        icon: Image.asset(
+                          'images/icon_tab_bookmark.png',
+                        ),
                       ),
                     ],
                   ),
@@ -206,9 +210,7 @@ class UserProfileScreen extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Text(
                     'amriahmadadibi',
                     style: TextStyle(

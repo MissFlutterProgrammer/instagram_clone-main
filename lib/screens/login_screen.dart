@@ -175,7 +175,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          Expanded(child: Container())
+          Expanded(
+            child: Container(),
+          ),
         ],
       ),
     );

@@ -85,9 +85,7 @@ class ShareBottomSheet extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 32,
-                  ),
+                  SizedBox(height: 32),
                 ],
               ),
             ),

@@ -101,14 +101,20 @@ class _ActivityScreenState extends State<ActivityScreen>
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return _getRow(ActivityStatus.followBack);
-          }, childCount: 5),
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return _getRow(ActivityStatus.followBack);
+            },
+            childCount: 5,
+          ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return _getRow(ActivityStatus.lkies);
-          }, childCount: 2),
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return _getRow(ActivityStatus.lkies);
+            },
+            childCount: 2,
+          ),
         ),
         SliverToBoxAdapter(
           child: Padding(
@@ -124,9 +130,12 @@ class _ActivityScreenState extends State<ActivityScreen>
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return _getRow(ActivityStatus.following);
-          }, childCount: 5),
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return _getRow(ActivityStatus.following);
+            },
+            childCount: 5,
+          ),
         )
       ],
     );
