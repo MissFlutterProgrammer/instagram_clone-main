@@ -46,25 +46,34 @@ class _MainScreenState extends State<MainScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: Image.asset('images/icon_home.png'),
-                activeIcon: Image.asset('images/icon_active_home.png'),
+                activeIcon: Image.asset(
+                  'images/icon_active_home.png',
+                ),
                 label: 'Item1',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset('images/icon_search_navigation.png'),
-                activeIcon:
-                    Image.asset('images/icon_search_navigation_active.png'),
+                activeIcon: Image.asset(
+                  'images/icon_search_navigation_active.png',
+                ),
                 label: 'Item2',
               ),
               BottomNavigationBarItem(
-                icon: Image.asset('images/icon_add_navigation.png'),
-                activeIcon:
-                    Image.asset('images/icon_add_navigation_active.png'),
+                icon: Image.asset(
+                  'images/icon_add_navigation.png',
+                ),
+                activeIcon: Image.asset(
+                  'images/icon_add_navigation_active.png',
+                ),
                 label: 'Item3',
               ),
               BottomNavigationBarItem(
-                icon: Image.asset('images/icon_activity_navigation.png'),
-                activeIcon:
-                    Image.asset('images/icon_activity_navigation_active.png'),
+                icon: Image.asset(
+                  'images/icon_activity_navigation.png',
+                ),
+                activeIcon: Image.asset(
+                  'images/icon_activity_navigation_active.png',
+                ),
                 label: 'Item4',
               ),
               BottomNavigationBarItem(
@@ -84,7 +93,9 @@ class _MainScreenState extends State<MainScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(6)),
                     child: FittedBox(
                       fit: BoxFit.cover,
-                      child: Image.asset('images/profile.png'),
+                      child: Image.asset(
+                        'images/profile.png',
+                      ),
                     ),
                   ),
                 ),

@@ -19,7 +19,9 @@ class HomeScreen extends StatelessWidget {
         title: SizedBox(
           width: 128,
           height: 24,
-          child: Image.asset('images/moodinger_logo.png'),
+          child: Image.asset(
+            'images/moodinger_logo.png',
+          ),
         ),
         actions: [
           Container(
@@ -61,7 +63,9 @@ class HomeScreen extends StatelessWidget {
                         );
                       });
                 },
-                child: Text('Open BottomSheet'),
+                child: Text(
+                  'Open BottomSheet',
+                ),
               ),
             ),
             SliverToBoxAdapter(
@@ -128,13 +132,17 @@ class HomeScreen extends StatelessWidget {
             top: 0,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset('images/post_cover.png'),
+              child: Image.asset(
+                'images/post_cover.png',
+              ),
             ),
           ),
           Positioned(
             top: 15,
             right: 15,
-            child: Image.asset('images/icon_video.png'),
+            child: Image.asset(
+              'images/icon_video.png',
+            ),
           ),
           Positioned(
             bottom: 15,
@@ -160,7 +168,9 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(width: 15),
                       Row(
                         children: [
-                          Image.asset('images/icon_hart.png'),
+                          Image.asset(
+                            'images/icon_hart.png',
+                          ),
                           SizedBox(width: 6),
                           Text(
                             '2.5 k',
@@ -175,7 +185,9 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(width: 42),
                       Row(
                         children: [
-                          Image.asset('images/icon_comments.png'),
+                          Image.asset(
+                            'images/icon_comments.png',
+                          ),
                           SizedBox(width: 6),
                           Text(
                             '1.5 k',
@@ -188,9 +200,13 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: 42),
-                      Image.asset('images/icon_share.png'),
+                      Image.asset(
+                        'images/icon_share.png',
+                      ),
                       SizedBox(width: 42),
-                      Image.asset('images/icon_save.png'),
+                      Image.asset(
+                        'images/icon_save.png',
+                      ),
                     ],
                   ),
                 ),
@@ -233,7 +249,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Image.asset('images/icon_menu.png')
+          Image.asset(
+            'images/icon_menu.png',
+          )
         ],
       ),
     );
@@ -252,7 +270,9 @@ class HomeScreen extends StatelessWidget {
         child: SizedBox(
           height: 38,
           width: 38,
-          child: Image.asset('images/profile.png'),
+          child: Image.asset(
+            'images/profile.png',
+          ),
         ),
       ),
     );
@@ -275,7 +295,9 @@ class HomeScreen extends StatelessWidget {
               child: SizedBox(
                 height: 58,
                 width: 58,
-                child: Image.asset('images/profile.png'),
+                child: Image.asset(
+                  'images/profile.png',
+                ),
               ),
             ),
           ),
@@ -312,7 +334,9 @@ class HomeScreen extends StatelessWidget {
                   color: Color(0xff1C1F2E),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Image.asset('images/icon_plus.png'),
+                child: Image.asset(
+                  'images/icon_plus.png',
+                ),
               ),
             ),
           ),

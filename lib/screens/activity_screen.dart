@@ -103,7 +103,9 @@ class _ActivityScreenState extends State<ActivityScreen>
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              return _getRow(ActivityStatus.followBack);
+              return _getRow(
+                ActivityStatus.followBack,
+              );
             },
             childCount: 5,
           ),
@@ -111,7 +113,9 @@ class _ActivityScreenState extends State<ActivityScreen>
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              return _getRow(ActivityStatus.lkies);
+              return _getRow(
+                ActivityStatus.lkies,
+              );
             },
             childCount: 2,
           ),
@@ -132,7 +136,9 @@ class _ActivityScreenState extends State<ActivityScreen>
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              return _getRow(ActivityStatus.following);
+              return _getRow(
+                ActivityStatus.following,
+              );
             },
             childCount: 5,
           ),
@@ -164,7 +170,9 @@ class _ActivityScreenState extends State<ActivityScreen>
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: FittedBox(
                 fit: BoxFit.cover,
-                child: Image.asset('images/item8.png'),
+                child: Image.asset(
+                  'images/item8.png',
+                ),
               ),
             ),
           ),
@@ -248,7 +256,9 @@ class _ActivityScreenState extends State<ActivityScreen>
             borderRadius: BorderRadius.all(Radius.circular(10)),
             child: FittedBox(
               fit: BoxFit.cover,
-              child: Image.asset('images/item1.png'),
+              child: Image.asset(
+                'images/item1.png',
+              ),
             ),
           ),
         );

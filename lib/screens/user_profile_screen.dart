@@ -92,7 +92,9 @@ class UserProfileScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               child: FittedBox(
                                 fit: BoxFit.cover,
-                                child: Image.asset('images/item$index.png'),
+                                child: Image.asset(
+                                  'images/item$index.png',
+                                ),
                               ),
                             ),
                           );
@@ -134,7 +136,9 @@ class UserProfileScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               child: FittedBox(
                                 fit: BoxFit.cover,
-                                child: Image.asset('images/item$index.png'),
+                                child: Image.asset(
+                                  'images/item$index.png',
+                                ),
                               ),
                             ),
                           );

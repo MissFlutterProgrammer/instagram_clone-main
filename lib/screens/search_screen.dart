@@ -32,7 +32,9 @@ class SearchScreen extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         child: FittedBox(
                           fit: BoxFit.cover,
-                          child: Image.asset('images/item$index.png'),
+                          child: Image.asset(
+                            'images/item$index.png',
+                          ),
                         ),
                       ),
                     );
@@ -72,7 +74,9 @@ class SearchScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           children: [
-            Image.asset('images/icon_search.png'),
+            Image.asset(
+              'images/icon_search.png',
+            ),
             SizedBox(width: 15),
             Expanded(
               child: TextField(
