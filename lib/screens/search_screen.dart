@@ -82,7 +82,9 @@ class SearchScreen extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search User',
-                  hintStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
                 ),

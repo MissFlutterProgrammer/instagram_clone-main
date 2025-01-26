@@ -127,9 +127,8 @@ class UserProfileScreen extends StatelessWidget {
                         ((context, index) {
                           return Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                             ),
                             child: ClipRRect(
                               borderRadius:
@@ -183,9 +182,7 @@ class UserProfileScreen extends StatelessWidget {
                 width: 2,
                 color: Color(0xffF35383),
               ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
             child: Padding(
               padding: EdgeInsets.all(2),
@@ -193,7 +190,9 @@ class UserProfileScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 child: FittedBox(
                   fit: BoxFit.cover,
-                  child: Image.asset('images/profile.png'),
+                  child: Image.asset(
+                    'images/profile.png',
+                  ),
                 ),
               ),
             ),

@@ -27,7 +27,6 @@ flutter:
 
   assets:
     - images/
-  #   - images/a_dot_ham.jpeg
 
   fonts:
     - family: GR

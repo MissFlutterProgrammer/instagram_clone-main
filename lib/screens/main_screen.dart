@@ -52,7 +52,9 @@ class _MainScreenState extends State<MainScreen> {
                 label: 'Item1',
               ),
               BottomNavigationBarItem(
-                icon: Image.asset('images/icon_search_navigation.png'),
+                icon: Image.asset(
+                  'images/icon_search_navigation.png',
+                ),
                 activeIcon: Image.asset(
                   'images/icon_search_navigation_active.png',
                 ),
