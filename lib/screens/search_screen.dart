@@ -24,9 +24,7 @@ class SearchScreen extends StatelessWidget {
                   ((context, index) {
                     return Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(10)),

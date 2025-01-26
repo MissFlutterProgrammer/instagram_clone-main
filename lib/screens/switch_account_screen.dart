@@ -41,9 +41,7 @@ class SwitchAccountScreen extends StatelessWidget {
                               Color.fromRGBO(255, 255, 255, 0.2),
                             ],
                           ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
                         ),
                         child: Column(
                           children: [

@@ -237,9 +237,8 @@ class _ActivityScreenState extends State<ActivityScreen>
         return ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xffF35383),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
             textStyle: TextStyle(
               fontFamily: 'GB',
               fontSize: 16,
