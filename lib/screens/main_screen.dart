@@ -45,7 +45,9 @@ class _MainScreenState extends State<MainScreen> {
             showUnselectedLabels: false,
             items: [
               BottomNavigationBarItem(
-                icon: Image.asset('images/icon_home.png'),
+                icon: Image.asset(
+                  'images/icon_home.png',
+                ),
                 activeIcon: Image.asset(
                   'images/icon_active_home.png',
                 ),
@@ -117,7 +119,9 @@ class _MainScreenState extends State<MainScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(6)),
                     child: FittedBox(
                       fit: BoxFit.cover,
-                      child: Image.asset('images/profile.png'),
+                      child: Image.asset(
+                        'images/profile.png',
+                      ),
                     ),
                   ),
                 ),

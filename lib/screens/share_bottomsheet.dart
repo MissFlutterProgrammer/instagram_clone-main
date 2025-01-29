@@ -136,7 +136,9 @@ class ShareBottomSheet extends StatelessWidget {
           height: 60,
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            child: Image.asset('images/profile.png'),
+            child: Image.asset(
+              'images/profile.png',
+            ),
           ),
         ),
         SizedBox(height: 10),
