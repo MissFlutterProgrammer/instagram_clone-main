@@ -121,7 +121,9 @@ class AddContentScreen extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(15)),
         child: FittedBox(
           fit: BoxFit.cover,
-          child: Image.asset('images/item8.png'),
+          child: Image.asset(
+            'images/item8.png',
+          ),
         ),
       ),
     );

@@ -160,9 +160,7 @@ class _ActivityScreenState extends State<ActivityScreen>
               shape: BoxShape.circle,
             ),
           ),
-          SizedBox(
-            width: 7,
-          ),
+          SizedBox(width: 7),
           SizedBox(
             height: 40,
             width: 40,

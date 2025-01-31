@@ -70,7 +70,9 @@ class ShareBottomSheet extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
-                          Image.asset('images/icon_search.png'),
+                          Image.asset(
+                            'images/icon_search.png',
+                          ),
                           SizedBox(width: 8),
                           Expanded(
                             child: TextField(
