@@ -1,9 +1,7 @@
-// ignore_for_file: unused_element, depend_on_referenced_packages
+// ignore_for_file: unused_element, depend_on_referenced_packages, library_prefixes, deprecated_member_use
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:instagram/screens/share_bottomsheet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,10 +9,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff1C1F2E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Color(0xff1C1F2E),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         title: SizedBox(
           width: 128,
@@ -27,7 +25,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             height: 24,
             width: 24,
-            margin: EdgeInsets.only(right: 18),
+            margin: const EdgeInsets.only(right: 18),
             child: Image.asset(
               'images/icon_direct.png',
             ),
@@ -38,48 +36,17 @@ class HomeScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: ElevatedButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                      barrierColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom,
-                          ),
-                          child: DraggableScrollableSheet(
-                            initialChildSize: 0.5,
-                            minChildSize: 0.2,
-                            maxChildSize: 0.7,
-                            builder: (context, controler) {
-                              return ShareBottomSheet(
-                                controller: controler,
-                              );
-                            },
-                          ),
-                        );
-                      });
-                },
-                child: Text(
-                  'Open BottomSheet',
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: _getSotryList(),
+              child: _getStoryList(),
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   return Column(
                     children: [
-                      SizedBox(height: 34),
+                      const SizedBox(height: 34),
                       _getHeaderPost(),
-                      SizedBox(height: 24),
-                      _getPostContent()
+                      const SizedBox(height: 24),
+                      _getPostContent(),
                     ],
                   );
                 },
@@ -92,33 +59,140 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _getSotryList() {
+  Widget _getStoryList() {
     return SizedBox(
       height: 120,
       child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return index == 0 ? _getAddSotryBox() : _getStoryListBox();
-          }),
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return index == 0 ? _getAddStoryBox() : _getStoryListBox();
+        },
+      ),
     );
   }
 
-  Widget _getPostList() {
-    return ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 9,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              SizedBox(height: 34),
-              _getHeaderPost(),
-              SizedBox(height: 24),
-              _getPostContent()
-            ],
-          );
-        });
+  Widget _getAddStoryBox() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      child: Column(
+        children: [
+          Container(
+            width: 68,
+            height: 68,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(17),
+            ),
+            child: Image.asset('images/icon_plus.png'),
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            'Your Story',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'GB',
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getStoryListBox() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      child: Column(
+        children: [
+          Container(
+            width: 68,
+            height: 68,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(17),
+              border: Border.all(
+                width: 2,
+                color: const Color(0xffF35383),
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.asset(
+                'images/profile.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            'amirhamadadibii',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'GB',
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getHeaderPost() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: Row(
+        children: [
+          _getStoryBox(),
+          const Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'amirhamadadibii',
+                  style: TextStyle(
+                    fontFamily: 'GB',
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                ),
+                Text(
+                  'امیراحمدادیبی برنامه‌نویس موبایل',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'SM',
+                  ),
+                )
+              ],
+            ),
+          ),
+          const Spacer(),
+          Image.asset('images/icon_more.png'),
+        ],
+      ),
+    );
+  }
+
+  Widget _getStoryBox() {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          width: 2,
+          color: const Color(0xffF35383),
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Image.asset(
+          'images/profile.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 
   Widget _getPostContent() {
@@ -158,21 +232,21 @@ class HomeScreen extends StatelessWidget {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        Color.fromRGBO(255, 255, 255, 0.5),
-                        Color.fromRGBO(255, 255, 255, 0.2),
+                        Colors.white.withOpacity(0.5),
+                        Colors.white.withOpacity(0.2),
                       ],
                     ),
                   ),
                   child: Row(
                     children: [
-                      SizedBox(width: 15),
+                      const SizedBox(width: 15),
                       Row(
                         children: [
                           Image.asset(
                             'images/icon_hart.png',
                           ),
-                          SizedBox(width: 6),
-                          Text(
+                          const SizedBox(width: 6),
+                          const Text(
                             '2.5 k',
                             style: TextStyle(
                               fontFamily: 'GB',
@@ -182,14 +256,14 @@ class HomeScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(width: 42),
+                      const SizedBox(width: 42),
                       Row(
                         children: [
                           Image.asset(
                             'images/icon_comments.png',
                           ),
-                          SizedBox(width: 6),
-                          Text(
+                          const SizedBox(width: 6),
+                          const Text(
                             '1.5 k',
                             style: TextStyle(
                               fontFamily: 'GB',
@@ -199,11 +273,11 @@ class HomeScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(width: 42),
+                      const SizedBox(width: 42),
                       Image.asset(
                         'images/icon_share.png',
                       ),
-                      SizedBox(width: 42),
+                      const SizedBox(width: 42),
                       Image.asset(
                         'images/icon_save.png',
                       ),
@@ -211,140 +285,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _getHeaderPost() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18),
-      child: Row(
-        children: [
-          _getStoryBox(),
-          Padding(
-            padding: EdgeInsets.only(left: 12),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'amirhamadadibii',
-                  style: TextStyle(
-                    fontFamily: 'GB',
-                    color: Colors.white,
-                    fontSize: 12,
-                  ),
-                ),
-                Text(
-                  'امیراحمدادیبی برنامه‌نویس موبایل',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SM',
-                  ),
-                )
-              ],
-            ),
-          ),
-          Spacer(),
-          Image.asset(
-            'images/icon_menu.png',
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _getStoryBox() {
-    return DottedBorder(
-      borderType: BorderType.RRect,
-      radius: Radius.circular(17),
-      padding: EdgeInsets.all(4),
-      color: Color(0xffF35383),
-      dashPattern: [40, 10],
-      strokeWidth: 2,
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-        child: SizedBox(
-          height: 38,
-          width: 38,
-          child: Image.asset(
-            'images/profile.png',
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _getStoryListBox() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-      child: Column(
-        children: [
-          DottedBorder(
-            borderType: BorderType.RRect,
-            radius: Radius.circular(17),
-            padding: EdgeInsets.all(4),
-            color: Color(0xffF35383),
-            dashPattern: [40, 10],
-            strokeWidth: 2,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              child: SizedBox(
-                height: 58,
-                width: 58,
-                child: Image.asset(
-                  'images/profile.png',
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 12),
-          Text(
-            'test',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _getAddSotryBox() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-      child: Column(
-        children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(17),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(2),
-              child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xff1C1F2E),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Image.asset(
-                  'images/icon_plus.png',
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 12),
-          Text(
-            'your story',
-            style: TextStyle(
-              color: Colors.white,
             ),
           )
         ],

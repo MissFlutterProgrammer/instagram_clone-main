@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:instagram/screens/activity_screen.dart';
 import 'package:instagram/screens/add_content_screen.dart';
@@ -14,137 +16,148 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedBottomNavigationItem = 0;
+  final PageController _pageController = PageController();
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      _selectedBottomNavigationItem = index;
+    });
+  }
+
+  void _onItemTapped(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       extendBody: true,
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          HomeScreen(),
+          SearchScreen(),
+          AddContentScreen(),
+          ActivityScreen(),
+          UserProfileScreen(),
+        ],
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(15),
             topRight: Radius.circular(15),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
+            ),
+          ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(15),
             topRight: Radius.circular(15),
           ),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Color(0xff1C1F2E),
+            backgroundColor: Theme.of(context).colorScheme.surface,
             currentIndex: _selectedBottomNavigationItem,
-            onTap: (int index) {
-              setState(() {
-                _selectedBottomNavigationItem = index;
-              });
-            },
+            onTap: _onItemTapped,
             showSelectedLabels: false,
             showUnselectedLabels: false,
+            selectedItemColor: Theme.of(context).primaryColor,
+            unselectedItemColor: Colors.grey,
             items: [
               BottomNavigationBarItem(
                 icon: Image.asset(
                   'images/icon_home.png',
+                  color: Colors.grey,
                 ),
                 activeIcon: Image.asset(
                   'images/icon_active_home.png',
+                  color: Theme.of(context).primaryColor,
                 ),
-                label: 'Item1',
+                label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(
                   'images/icon_search_navigation.png',
+                  color: Colors.grey,
                 ),
                 activeIcon: Image.asset(
                   'images/icon_search_navigation_active.png',
+                  color: Theme.of(context).primaryColor,
                 ),
-                label: 'Item2',
+                label: 'Search',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(
                   'images/icon_add_navigation.png',
+                  color: Colors.grey,
                 ),
                 activeIcon: Image.asset(
                   'images/icon_add_navigation_active.png',
+                  color: Theme.of(context).primaryColor,
                 ),
-                label: 'Item3',
+                label: 'Add',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(
                   'images/icon_activity_navigation.png',
+                  color: Colors.grey,
                 ),
                 activeIcon: Image.asset(
                   'images/icon_activity_navigation_active.png',
+                  color: Theme.of(context).primaryColor,
                 ),
-                label: 'Item4',
+                label: 'Activity',
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: Color(0xffC5C5C5),
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8),
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.asset(
-                        'images/profile.png',
-                      ),
-                    ),
-                  ),
-                ),
-                activeIcon: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: Color(0xffF35383),
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8),
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.asset(
-                        'images/profile.png',
-                      ),
-                    ),
-                  ),
-                ),
-                label: 'Item4',
+                icon: _buildProfileIcon(false),
+                activeIcon: _buildProfileIcon(true),
+                label: 'Profile',
               ),
             ],
           ),
         ),
       ),
-      body: IndexedStack(
-        index: _selectedBottomNavigationItem,
-        children: getLayout(),
-      ),
     );
   }
 
-  List<Widget> getLayout() {
-    return <Widget>[
-      HomeScreen(),
-      SearchScreen(),
-      AddContentScreen(),
-      ActivityScreen(),
-      UserProfileScreen()
-    ];
+  Widget _buildProfileIcon(bool isActive) {
+    return Container(
+      width: 30,
+      height: 30,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2,
+          color: isActive ? Theme.of(context).primaryColor : Colors.grey,
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6),
+        child: Image.asset(
+          'images/profile.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }
