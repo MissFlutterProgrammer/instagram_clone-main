@@ -18,8 +18,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  dotted_border: ^3.0.1
-  flutter_lints: ^5.0.0
+  dotted_border: ^3.1.0
+  flutter_lints: ^6.0.0
 
 flutter:
 
